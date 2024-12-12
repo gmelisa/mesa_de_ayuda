@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesa de Ayuda</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Mesa de Ayuda</h1>
+    </header>
+
+    <div class="container">
+        <!-- Página de Login -->
+        <div id="login" class="page">
+            <h2>Iniciar sesión</h2>
+            <form id="login-form" action="login.php" method="POST">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required><br><br>
+
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required><br><br>
+
+                <button type="submit">Iniciar sesión</button>
+            </form>
+            <p>No tienes cuenta? <a href="javascript:mostrarPagina('registro')">Regístrate aquí</a></p>
+        </div>
+
+        <!-- Página de Registro -->
+        <div id="registro" class="page hidden">
+            <h2>Registrar nuevo usuario</h2>
+            <form id="registro-form" action="registro.php" method="POST">
+                <label for="first-name">Primer nombre:</label>
+                <input type="text" id="first-name" name="first-name" required><br><br>
+
+                <label for="last-name">Primer apellido:</label>
+                <input type="text" id="last-name" name="last-name" required><br><br>
+
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required><br><br>
+
+                <label for="new-password">Contraseña:</label>
+                <input type="password" id="new-password" name="new-password" required><br><br>
+
+                <button type="submit">Registrar</button>
+            </form>
+            <p>¿Ya tienes cuenta? <a href="javascript:mostrarPagina('login')">Inicia sesión aquí</a></p>
+        </div>
+
+        <!-- Página Principal -->
+        <div id="principal" class="page hidden">
+            <h2>Bienvenido a la Mesa de Ayuda</h2>
+            <form id="solicitud-form">
+                <label for="solicitud">Descripción de la solicitud:</label><br>
+                <textarea id="solicitud" name="solicitud" rows="4" required></textarea><br><br>
+
+                <label for="urgencia">Nivel de urgencia:</label>
+                <select id="urgencia" name="urgencia" required>
+                    <option value="alta">Alta</option>
+                    <option value="media">Media</option>
+                    <option value="baja">Baja</option>
+                </select><br><br>
+
+                <label for="respuesta-pdf">Adjuntar PDF como respuesta:</label>
+                <input type="file" id="respuesta-pdf" name="respuesta-pdf" accept=".pdf"><br><br>
+
+                <button type="submit">Enviar solicitud</button>
+            </form>
+
+            <h3>Ver solicitudes anteriores</h3>
+            <div id="solicitudes-container">
+                <!-- Las solicitudes cargadas dinámicamente aparecerán aquí -->
+            </div>
+            <button onclick="verSolicitudes()">Ver solicitudes</button><br><br>
+
+            <!-- Botón para regresar al Login -->
+            <button onclick="mostrarPagina('login')">Volver al Login</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
